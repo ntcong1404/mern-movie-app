@@ -13,8 +13,8 @@ const tmdbEndpoints = {
 
   mediaDiscover: ({ item, with_genres, with_keywords, page }) =>
     tmdbConfig.getUrl(`discover/${item}`, {
-      with_genres,
-      with_keywords,
+      without_genres: with_genres,
+      without_keywords: with_keywords,
       page,
     }),
 
