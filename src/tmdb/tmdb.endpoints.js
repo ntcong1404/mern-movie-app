@@ -22,7 +22,7 @@ const tmdbEndpoints = {
         ? tmdbConfig.getUrl(`movie/now_playing`, { page })
         : with_genres === "popular"
         ? tmdbConfig.getUrl(`movie/popular`, { page })
-        : with_genres === "airing_today"
+        : with_genres === "top_rated"
         ? tmdbConfig.getUrl(`movie/top_rated`, { page })
         : with_genres === "upcoming"
         ? tmdbConfig.getUrl(`movie/upcoming`, { page })
