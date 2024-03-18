@@ -12,11 +12,15 @@ const tmdbEndpoints = {
     tmdbConfig.getUrl(`${item}/now_playing`, { page }),
 
   mediaDiscover: ({ item, with_genres, with_keywords, page }) =>
-    tmdbConfig.getUrl(`discover/${item}`, {
-      with_genres,
-      with_keywords,
-      page,
-    }),
+    with_keywords
+      ? tmdbConfig.getUrl(`discover/${item}`, {
+          with_keywords,
+          page,
+        })
+      : tmdbConfig.getUrl(`discover/${item}`, {
+          with_genres,
+          page,
+        }),
 
   mediaDetails: ({ item, id }) => tmdbConfig.getUrl(`${item}/${id}`),
   mediaDetailsOptions: ({ item, id, option }) =>

@@ -42,13 +42,14 @@ const getDiscover = async (req, res) => {
   try {
     const { item } = req.params;
     const { with_genres, with_keywords, page } = req.query;
+
     const response = await tmdbApi.mediaDiscover({
       item,
       with_genres,
       with_keywords,
       page,
     });
-
+    console.log(response);
     return responseHandler.ok(res, response);
   } catch {
     responseHandler.error(res);
