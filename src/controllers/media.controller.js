@@ -49,7 +49,6 @@ const getDiscover = async (req, res) => {
       with_keywords,
       page,
     });
-    console.log(response);
     return responseHandler.ok(res, response);
   } catch {
     responseHandler.error(res);

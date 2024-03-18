@@ -12,12 +12,38 @@ const tmdbEndpoints = {
     tmdbConfig.getUrl(`${item}/now_playing`, { page }),
 
   mediaDiscover: ({ item, with_genres, with_keywords, page }) =>
-    with_keywords
-      ? tmdbConfig.getUrl(`discover/${item}`, {
+    item === "movie"
+      ? with_keywords
+        ? tmdbConfig.getUrl(`discover/movie`, {
+            with_keywords,
+            page,
+          })
+        : with_genres === "now_playing"
+        ? tmdbConfig.getUrl(`movie/now_playing`, { page })
+        : with_genres === "popular"
+        ? tmdbConfig.getUrl(`movie/popular`, { page })
+        : with_genres === "airing_today"
+        ? tmdbConfig.getUrl(`movie/top_rated`, { page })
+        : with_genres === "upcoming"
+        ? tmdbConfig.getUrl(`movie/upcoming`, { page })
+        : tmdbConfig.getUrl(`discover/${item}`, {
+            with_genres,
+            page,
+          })
+      : with_keywords
+      ? tmdbConfig.getUrl(`discover/tv`, {
           with_keywords,
           page,
         })
-      : tmdbConfig.getUrl(`discover/${item}`, {
+      : with_genres === "top_rated"
+      ? tmdbConfig.getUrl(`tv/top_rated`, { page })
+      : with_genres === "popular"
+      ? tmdbConfig.getUrl(`tv/popular`, { page })
+      : with_genres === "airing_today"
+      ? tmdbConfig.getUrl(`tv/airing_today`, { page })
+      : with_genres === "on_the_air"
+      ? tmdbConfig.getUrl(`tv/on_the_air`, { page })
+      : tmdbConfig.getUrl(`discover/tv`, {
           with_genres,
           page,
         }),
