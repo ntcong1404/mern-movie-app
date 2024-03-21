@@ -43,7 +43,7 @@ const tmdbEndpoints = {
       ? tmdbConfig.getUrl(`tv/airing_today`, { page })
       : with_genres === "on_the_air"
       ? tmdbConfig.getUrl(`tv/on_the_air`, { page })
-      : tmdbConfig.getUrl(`discover/tv`, {
+      : tmdbConfig.getUrl(`discover/${item}`, {
           with_genres,
           page,
         }),
